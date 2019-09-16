@@ -26,5 +26,13 @@ describe('<Controls />', () => {
         expect(mockClosed).toHaveBeenCalled()
     })  
 
+    it('should lock gate', () => {
+        const {getByText} = render(<Controls />) 
+        expect(getByText('Lock Gate').disabled).toBeTruthy()
+    })
 
+    it('should open gate', () => {
+        const {getByText} = render(<Controls locked={true} closed={true} />) 
+        expect(getByText('Open Gate').disabled).toBeTruthy()
+    })
 })
